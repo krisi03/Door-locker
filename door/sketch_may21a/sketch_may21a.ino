@@ -75,8 +75,8 @@ void unlockTheDoor(){
     lcd.print("Open the door  ");
     lcd.setCursor(0,1);
     lcd.print("PASS|");
-    keypressed = myKeypad.getKey();   //Read pressed keys
-    if (keypressed != NO_KEY){    //Accept only numbers and * from keypad
+    keypressed = myKeypad.getKey();   
+    if (keypressed != NO_KEY){   
       if (keypressed == '0' || keypressed == '1' || keypressed == '2' || keypressed == '3' ||
       keypressed == '4' || keypressed == '5' || keypressed == '6' || keypressed == '7' ||
       keypressed == '8' || keypressed == '9' ){
@@ -108,8 +108,8 @@ void unlockTheDoor(){
           lcd.print("You have 5 sec");
           digitalWrite(red, LOW);
           digitalWrite(green, HIGH);
-          tone(buzzer,100);    //Play a tone while door is unlocked
-          servo.write(55);//unlock the door for 5 seconds
+          tone(buzzer,100);    
+          servo.write(55);
           delay(5000);
           goto lockAgain;
         }
@@ -133,8 +133,8 @@ void changePassword(){
   tempPassword="";
   lcd.clear();
   i=2;
-  while(!changedPassword){        //Waiting for current password
-    keypressed = myKeypad.getKey();   //Read pressed keys
+  while(!changedPassword){        
+    keypressed = myKeypad.getKey();  
     lcd.setCursor(0,0);
     lcd.print("CURRENT PASSWORD");
     lcd.setCursor(0,1);
@@ -157,10 +157,10 @@ void changePassword(){
         if (password==tempPassword){
           storedPassword=false;
           tone(buzzer,500,200);
-          newPassword();          //Password is corrent, so call the newPassword function
+          newPassword();          
           break;
         }
-        else{               //Try again
+        else{             
           tempPassword="";
           tone(buzzer,500,200);
           delay(300);
@@ -180,7 +180,7 @@ void newPassword(){
   lcd.clear();
   i=1;
   while(!storedPassword){
-    keypressed = myKeypad.getKey();   //Read pressed keys
+    keypressed = myKeypad.getKey();   
     if (doublecheck==0){
       lcd.setCursor(0,0);
       lcd.print("SET NEW PASSWORD");
@@ -220,8 +220,8 @@ void newPassword(){
           if (firstpass==tempPassword){
             i=1;
             firstpass="";
-            password = tempPassword; // New password saved
-            tempPassword="";//erase temp password
+            password = tempPassword; 
+            tempPassword="";
             lcd.setCursor(0,0);
             lcd.print("PASSWORD CHANGED");
             lcd.setCursor(0,1);
